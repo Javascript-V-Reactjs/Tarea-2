@@ -1,6 +1,6 @@
 export const students = [
-  {id: 123, name: "Barquero Zúñiga Fabián Isaac"},
-  {id: 456, name: "Campos Ledezma Juan Ignacio"}, 
+  {id: 123, name: "Barquero Zúñiga Fabián Isaac", phone:"1234"},
+  {id: 456, name: "Campos Ledezma Juan Ignacio", phone:"", Direction:"Desamparados"}, 
   {id: 789, name: "Castro Matarrita Kendoll"},
   {id: 101, name: "Conejo Leiva María José"}, 
   {id: 121, name: "Guzmán Ramírez Alex Daniel"}, 

@@ -1,5 +1,6 @@
 import './App.css';
 import { students } from './students';
+import { titles } from './titlerows';
 import List from './components/List'
 import Navbar from './components/Navbar';
 import Layout from './components/Layout'
@@ -9,7 +10,7 @@ function App() {
   return (
     <Layout>
       <Navbar/>
-      <List students={students} />
+      <List students={students} titles={titles} />
       <Footer />
     </Layout>
   );
