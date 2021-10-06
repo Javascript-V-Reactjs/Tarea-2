@@ -4,9 +4,11 @@ function List(props) {
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Is Present?</th>
+                        {
+                            props.children.type.map(title =>
+                                <th key = {title.id}>{title.header}</th>
+                            )
+                        }
                     </tr>
                 </thead>
                 <tbody>
