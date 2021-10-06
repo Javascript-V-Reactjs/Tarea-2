@@ -3,5 +3,6 @@ export const titles = [
   {ids: "2", name: "Name"}, 
   {ids: "3", name: "Phone Number"},
   {ids: "4", name: "Direction"},
-  {ids: "5", name: "Province"} 
+  {ids: "5", name: "Province"}, 
+  {ids: "5", name: "Province"},
 ]

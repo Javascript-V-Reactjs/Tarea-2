@@ -19,8 +19,6 @@ function List(props) {
                                 {Object.values(student).map((element =>
                                     <td key={element}>{element}</td>
                                 ))}
-
-
                             </tr>
                         )
                         )
