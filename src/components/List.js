@@ -8,17 +8,19 @@ function List(props) {
             <table>
                 <thead>
                     <tr>
-                        props.headers.map(headers =>
-                        <th key={headers.id}> 
-                            {headers.name})
-                        </th>
+                        {
+                                props.headers.map(headers =>
+                            <th key={headers.id}> 
+                                {headers.name}
+                            </th>)
+                        }
                     </tr>
                 </thead>
                 <tbody>
                     {
                         props.students.map((student => 
                             <tr key={student.id}>
-                                {Object.values(students).map((elemento =>
+                                {Object.values(student).map((elemento =>
                                     <td key={elemento}>
                                         {elemento}
                                     </td>
@@ -27,7 +29,7 @@ function List(props) {
                                     <input type="checkbox" style={{marginLeft:"auto"}}/>
                                 </td>
                             </tr>
-                        )
+                            ))
                     }
                 </tbody>
             </table>

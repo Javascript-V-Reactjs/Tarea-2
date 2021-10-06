@@ -4,7 +4,7 @@ import List from './components/List'
 import Navbar from './components/Navbar';
 import Layout from './components/Layout'
 import Footer from './components/Footer';
-import {headers} from './components/headers';
+import {headers} from './headers';
 
 function App() {
   return (
