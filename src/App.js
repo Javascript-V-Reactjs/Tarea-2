@@ -4,15 +4,19 @@ import List from './components/List'
 import Navbar from './components/Navbar';
 import Layout from './components/Layout'
 import Footer from './components/Footer';
+import Rows  from './rows';
 
 function App() {
   return (
     <Layout>
       <Navbar/>
-      <List students={students} />
+      <List students={students}>
+        <Rows />
+      </List>
       <Footer />
     </Layout>
   );
 }
+
 
 export default App;
