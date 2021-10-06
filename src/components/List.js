@@ -2,13 +2,7 @@ function List(props) {
     return (
         <div style={{flex: "1 0 auto"}}>
             <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Is Present?</th>
-                    </tr>
-                </thead>
+                {props.children}
                 <tbody>
                     {
                         props.students.map(student => 
