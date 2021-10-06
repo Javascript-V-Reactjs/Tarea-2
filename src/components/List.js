@@ -8,7 +8,6 @@ function List(props) {
             <table>
                 <thead>
                     <tr>
-                        {/* error en la flecha */}
                         props.headers.map(headers =>
                         <th key={headers.id}> 
                             {headers.name})
