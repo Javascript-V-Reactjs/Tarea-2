@@ -1,10 +1,11 @@
 import './App.css';
 import { students } from './students';
+import { headers } from './headers';
 import List from './components/List'
 import Navbar from './components/Navbar';
 import Layout from './components/Layout'
 import Footer from './components/Footer';
-import {headers} from './headers';
+
 
 function App() {
   return (

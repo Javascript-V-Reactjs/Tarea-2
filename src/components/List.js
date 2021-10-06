@@ -18,18 +18,13 @@ function List(props) {
                 </thead>
                 <tbody>
                     {
-                        props.students.map((student => 
+                        props.students.map(student => 
                             <tr key={student.id}>
-                                {Object.values(student).map((elemento =>
-                                    <td key={elemento}>
-                                        {elemento}
-                                    </td>
-                                    ))}
-                                <td>
-                                    <input type="checkbox" style={{marginLeft:"auto"}}/>
-                                </td>
+                                <td>{student.id}</td>
+                                <td>{student.name}</td>
+                                <td><input type="checkbox" style={{marginLeft:"auto"}}/></td>
                             </tr>
-                            ))
+                        )
                     }
                 </tbody>
             </table>
