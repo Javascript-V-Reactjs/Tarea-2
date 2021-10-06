@@ -1,21 +1,19 @@
+import sectionItems from "../sections"
+
 function List(props) {
     return (
-        <div style={{flex: "1 0 auto"}}>
+        <div style={{ flex: "1 0 auto" }}>
             <table>
                 <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Is Present?</th>
-                    </tr>
+                    <tr> {sectionItems} </tr>
                 </thead>
                 <tbody>
                     {
-                        props.students.map(student => 
+                        props.students.map(student =>
                             <tr key={student.id}>
                                 <td>{student.id}</td>
                                 <td>{student.name}</td>
-                                <td><input type="checkbox" style={{marginLeft:"auto"}}/></td>
+                                <td><input type="checkbox" style={{ marginLeft: "auto" }} /></td>
                             </tr>
                         )
                     }

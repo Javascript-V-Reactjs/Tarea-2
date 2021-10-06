@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <Layout>
-      <Navbar/>
+      <Navbar />
       <List students={students} />
       <Footer />
     </Layout>
