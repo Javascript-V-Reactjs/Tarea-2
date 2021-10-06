@@ -884,3 +884,7 @@ body > footer {
     text-decoration: underline;
   }
 }
+.hi:hover {
+  border: 10px solid var(-highlight)
+  /* background-color: #00f; */
+}
