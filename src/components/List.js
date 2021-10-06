@@ -4,9 +4,14 @@ function List(props) {
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Is Present?</th>
+                      {
+                        props.header.map(header => 
+                          <th key={header.id}>
+                            {header.name}
+                            {header.phone}
+                          </th>
+                        )
+                      }
                     </tr>
                 </thead>
                 <tbody>
@@ -16,6 +21,7 @@ function List(props) {
                                 <td>{student.id}</td>
                                 <td>{student.name}</td>
                                 <td><input type="checkbox" style={{marginLeft:"auto"}}/></td>
+                                <td>{student.phone}</td>
                             </tr>
                         )
                     }
