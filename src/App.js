@@ -4,12 +4,13 @@ import List from './components/List'
 import Navbar from './components/Navbar';
 import Layout from './components/Layout'
 import Footer from './components/Footer';
+import {headers} from './components/headers';
 
 function App() {
   return (
     <Layout>
       <Navbar/>
-      <List students={students} />
+      <List students={students} headers={headers} />
       <Footer />
     </Layout>
   );
