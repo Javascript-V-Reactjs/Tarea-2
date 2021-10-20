@@ -1,8 +1,5 @@
-export const titles = [
-  {ids: "1", name: "ID"},
-  {ids: "2", name: "Name"}, 
-  {ids: "3", name: "Phone Number"},
-  {ids: "4", name: "Direction"},
-  {ids: "5", name: "Province"}, 
-  {ids: "5", name: "Province"},
+export const Titles = [
+  {id: 1, header: "ID"},
+  {id: 2, header: "Name"}, 
+  {id: 3, header: "Is Present?"},
 ]
