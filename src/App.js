@@ -33,6 +33,7 @@ class App extends React.Component {
           students: result.students,
           isLoaded: true
         })
+        this.data = result;
       })
   }
 
@@ -40,23 +41,34 @@ class App extends React.Component {
     const id = this.state.id
     const name = this.state.name
     const form = document.formReset
-    console.log(form)
-
     event.preventDefault()
 
-    if (name.length === 0) {
+    if (id === '') {
+      alert("Por favor ingrese el id")
+      form.reset()
+    }
+    else if (id !== '') {
+      this.data.students.forEach(students => {
+        if (id === students.id) {
+          alert("El id ya existe")
+        }
+      });
+    }
+    else if (name.length === 0) {
       alert("Por favor ingrese el nombre")
       form.reset()
     }
-    else if (id === '') {
-      alert("Por favor ingrese el id")
-      form.reset({})
+    else if (name !== 0) {
+      this.data.students.forEach(students => {
+        if (name === students.name) {
+          alert("El estudiante ya existe")
+        }
+      });
     }
     else {
       const students = [...this.state.students, { "id": id, "name": name }]
       this.setState({ students: students })
       form.reset()
-
     }
   }
 
