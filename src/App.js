@@ -1,6 +1,5 @@
 import './App.css';
 import React from 'react';
-// import { students } from './students';
 import List from './components/List'
 import Navbar from './components/Navbar';
 import Layout from './components/Layout'
@@ -15,8 +14,6 @@ class App extends React.Component {
       id: 0,
       name: ''
     }
-    // this.handleIdChange = this.handleIdChange.bind(this);
-    // this.handleNameChange = this.handleNameChange.bind(this);
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -32,45 +29,47 @@ class App extends React.Component {
         this.setState({
           students: result.students,
           isLoaded: true
+        })
       })
-    })
   }
 
-  handleSubmit(event) {
+  handleSubmit(e) {
+    e.preventDefault()
     const id = this.state.id
     const name = this.state.name
-    event.preventDefault()
-    const students = [...this.state.students, {"id": id, "name": name}]
-    this.setState({students: students})
+    const students = this.state.students
+    this.setState({
+      id: '',
+      name: ''
+    });
+    for (let i = 0; i < students.length; i++) {
+      if (Number(id) === students[i].id) {
+        console.log('El ID ya existe');
+        break
+      }
+    }
+    const newStudentsArray = [...students, { id: id, name: name }]
+    this.setState({ students: newStudentsArray })
   }
 
-  // handleIdChange(event) {
-  //   this.setState({id: event.target.value});  
-  // }
-
-  // handleNameChange(event) {
-  //   this.setState({name: event.target.value});  
-  // }
-
-  handleChange(event) {
+  handleChange(e) {
     this.setState({
-      [event.target.name]: event.target.value
+      [e.target.name]: e.target.value
     })
   }
 
-  render(){
+  render() {
     const { students, isLoaded } = this.state
     return (
       <Layout>
-        <Navbar/>
+        <Navbar />
 
         <form onSubmit={this.handleSubmit}>
           <input value={this.state.id} type="number" name="id" placeholder="id" onChange={this.handleChange}></input>
           <input value={this.state.name} type="text" name="name" placeholder="name" onChange={this.handleChange}></input>
           <button type="submit" value="submit">Add student</button>
         </form>
-        
-        {!isLoaded ? <p>loading...</p> : <List students={students} hoverable/>}
+        {!isLoaded ? <p>loading...</p> : <List students={students} hoverable />}
         <Footer />
       </Layout>
     );
