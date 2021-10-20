@@ -1,16 +1,17 @@
 import sectionItems from "../sections"
 
 function List(props) {
+
     return (
         <div style={{ flex: "1 0 auto" }}>
             <table>
                 <thead>
                     <tr> {sectionItems} </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     {
                         props.students.map(student =>
-                            <tr key={student.id}>
+                            <tr className={props.hoverable ? 'hoverable' : ''} key={student.id}>
                                 <td>{student.id}</td>
                                 <td>{student.name}</td>
                                 <td><input type="checkbox" style={{ marginLeft: "auto" }} /></td>
