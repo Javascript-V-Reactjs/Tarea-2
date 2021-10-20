@@ -42,6 +42,7 @@ class App extends React.Component {
       id: '',
       name: ''
     });
+    // Si valida si el id existe pero igual agrega
     for (let i = 0; i < students.length; i++) {
       if (Number(id) === students[i].id) {
         console.log('El ID ya existe');
