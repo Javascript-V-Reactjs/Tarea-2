@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-// import { students } from './students';
+
 import List from './components/List'
 import Navbar from './components/Navbar';
 import Layout from './components/Layout'
@@ -15,8 +15,6 @@ class App extends React.Component {
       id: 0,
       name: ''
     }
-    // this.handleIdChange = this.handleIdChange.bind(this);
-    // this.handleNameChange = this.handleNameChange.bind(this);
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -40,17 +38,19 @@ class App extends React.Component {
     const id = this.state.id
     const name = this.state.name
     event.preventDefault()
-    const students = [...this.state.students, {"id": id, "name": name}]
-    this.setState({students: students})
+    this.setState({
+      id: '',
+      name: ''
+    })
+    const newStudents = [...this.state.students, {"id": id, "name": name}]
+    for(let i = 0; i < this.state.students.length; i++) {
+      if(Number(id) === this.state.students[i].id){
+        return alert('El id de este estudiante ya existe')
+      }
+    }
+    this.setState({students: newStudents})
   }
 
-  // handleIdChange(event) {
-  //   this.setState({id: event.target.value});  
-  // }
-
-  // handleNameChange(event) {
-  //   this.setState({name: event.target.value});  
-  // }
 
   handleChange(event) {
     this.setState({
@@ -65,8 +65,8 @@ class App extends React.Component {
         <Navbar/>
 
         <form onSubmit={this.handleSubmit}>
-          <input value={this.state.id} type="number" name="id" placeholder="id" onChange={this.handleChange}></input>
-          <input value={this.state.name} type="text" name="name" placeholder="name" onChange={this.handleChange}></input>
+          <input required value={this.state.id} type="number" name="id" placeholder="id" onChange={this.handleChange}></input>
+          <input required value={this.state.name} type="text" name="name" placeholder="name" onChange={this.handleChange}></input>
           <button type="submit" value="submit">Add student</button>
         </form>
         
