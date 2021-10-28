@@ -1,10 +1,10 @@
 import './App.css';
 import React from 'react';
-// import { students } from './students';
 import List from './components/List'
 import Navbar from './components/Navbar';
 import Layout from './components/Layout'
 import Footer from './components/Footer';
+import Titles  from './Titles'
 
 class App extends React.Component {
   constructor() {
@@ -13,10 +13,8 @@ class App extends React.Component {
       students: {},
       isLoaded: false,
       id: 0,
-      name: ''
+      name: '',
     }
-    // this.handleIdChange = this.handleIdChange.bind(this);
-    // this.handleNameChange = this.handleNameChange.bind(this);
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -39,18 +37,26 @@ class App extends React.Component {
   handleSubmit(event) {
     const id = this.state.id
     const name = this.state.name
+    const studentsArray = this.state.students
     event.preventDefault()
+    this.setState({id:0})
+    this.setState({name:''})
+    for(let i= 0; i< studentsArray.length; i++){
+      if(name === ''){
+        return alert("Campo de nombre vacio, Por favor ingrese su nombre");
+      }else if(id===0){
+        return alert('El id debe ser mayor a 0, Por favor ingrese un numero mayor a 0');
+      }else if(Number(id) === studentsArray[i].id && Number(id) !== 0){
+        return alert('El id ya existe en la base de datos');
+      }
+      // }else{
+      //   return alert("Felicidades nuevo estudiante ingresado") // por alguna razon esto no me funciona 
+      // }
+    }
     const students = [...this.state.students, {"id": id, "name": name}]
     this.setState({students: students})
   }
 
-  // handleIdChange(event) {
-  //   this.setState({id: event.target.value});  
-  // }
-
-  // handleNameChange(event) {
-  //   this.setState({name: event.target.value});  
-  // }
 
   handleChange(event) {
     this.setState({
@@ -70,7 +76,7 @@ class App extends React.Component {
           <button type="submit" value="submit">Add student</button>
         </form>
         
-        {!isLoaded ? <p>loading...</p> : <List students={students} hoverable/>}
+        {!isLoaded ? <p>loading...</p> : <List students={students} hoverable><Titles /></List>}
         <Footer />
       </Layout>
     );

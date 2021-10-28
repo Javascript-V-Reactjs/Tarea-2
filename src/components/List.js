@@ -1,13 +1,15 @@
 function List(props) {
-
+    const titles = props.children.type
     return (
         <div style={{flex: "1 0 auto"}}>
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Is Present?</th>
+                        {
+                            titles.map(title =>
+                                <th key={title.id}>{title.name}</th>
+                            )
+                        }
                     </tr>
                 </thead>
                 <tbody >
