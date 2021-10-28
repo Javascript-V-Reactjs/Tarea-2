@@ -21,9 +21,4 @@ function Navbar() {
         </div>
     )
 }
-
-// const style = {
-//     borderB
-// }
-
 export default Navbar
