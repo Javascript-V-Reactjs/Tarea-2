@@ -12,10 +12,10 @@ function List(props) {
                 </thead>
                 <tbody >
                     {
-                        props.students.map(student => 
-                            <tr className={props.hoverable ? 'hoverable' : ''} key={student.id}>
-                                <td>{student.id}</td>
-                                <td>{student.name}</td>
+                        props.students.map(students => 
+                            <tr className={props.hoverable ? 'hoverable' : ''} key={students.id}>
+                                <td>{students.id}</td>
+                                <td>{students.name}</td>
                                 <td><input type="checkbox" style={{marginLeft:"auto"}}/></td>
                             </tr>
                         )
