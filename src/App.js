@@ -41,11 +41,11 @@ class App extends React.Component {
     this.setState({id:0})
     this.setState({name:''})
     for(let i = 0; i < this.state.students.length; i++){
-      if (this.state.name === '') {
+      if (name === '') {
         return alert('el campo de nombre esta vacio, por favor ingrese la informacion requerida')
-      }else if (this.state.id === 0) {
-        return alert('el campo de id esta vacio, por favor ingrese la informacion requerida')
-      }else if(Number(id) !==0 && Number(id) === this.state.students[i].id){
+      }else if (id === 0) {
+        return alert('el campo de id debe ser mayor a cero, por favor ingrese la informacion requerida')
+      }else if(id == this.state.students[i].id){
         return alert('este id ya existe ');
       }
     }
