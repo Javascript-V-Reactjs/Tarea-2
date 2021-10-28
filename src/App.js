@@ -39,37 +39,23 @@ class App extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault()
     const id = this.state.id
     const name = this.state.name
-    event.preventDefault()
-    if (this.state.id === '' || this.state.id ===0) {
-      alert("ingrese un id")
-    } else if(this.state.name === ''){
-      alert("ingrese un nombre")
-      
-    } else if (this.state.name !=='' & this.state.id !==0) {
-      for (let i = 0; i < this.state.students.length; i++) {
-        if (id === `${this.state.students[i].id}`) {
-          alert('este Id ya esta en uso');
-          break
-        } else {
-          const students = [...this.state.students, { "id": id, "name": name }]
-          this.setState({ students: students })
-          break
-        }
-      }
-    }
     this.setState({id:0})
     this.setState({name:''})
+    for(let i = 0; i < this.state.students.length; i++){
+      if (this.state.name === '') {
+        return alert('ingrese un nombre')
+      }else if (this.state.id === 0) {
+        return alert('ingrese un id')
+      }else if(Number(id) !==0 && Number(id) === this.state.students[i].id){
+        return alert('El id ya esta en uso ');
+      }
+    }
+    const students = [...this.state.students, { id: id, name: name }]
+    this.setState({ students: students })
   }
-
-  // handleIdChange(event) {
-  //   this.setState({id: event.target.value});  
-  // }
-
-  // handleNameChange(event) {
-  //   this.setState({name: event.target.value});  
-  // }
 
   handleChange(event) {
     this.setState({
