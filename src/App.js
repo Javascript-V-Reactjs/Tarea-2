@@ -15,8 +15,6 @@ class App extends React.Component {
       id: 0,
       name: ''
     }
-    // this.handleIdChange = this.handleIdChange.bind(this);
-    // this.handleNameChange = this.handleNameChange.bind(this);
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -40,17 +38,20 @@ class App extends React.Component {
     const id = this.state.id
     const name = this.state.name
     event.preventDefault()
+    this.setState({id:0})
+    this.setState({name:''})
+    for(let i = 0; i < this.state.students.length; i++){
+      if (this.state.name === '') {
+        return alert('el campo de nombre esta vacio, por favor ingrese la informacion requerida')
+      }else if (this.state.id === 0) {
+        return alert('el campo de id esta vacio, por favor ingrese la informacion requerida')
+      }else if(Number(id) !==0 && Number(id) === this.state.students[i].id){
+        return alert('este id ya existe ');
+      }
+    }
     const students = [...this.state.students, {"id": id, "name": name}]
     this.setState({students: students})
   }
-
-  // handleIdChange(event) {
-  //   this.setState({id: event.target.value});  
-  // }
-
-  // handleNameChange(event) {
-  //   this.setState({name: event.target.value});  
-  // }
 
   handleChange(event) {
     this.setState({
