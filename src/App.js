@@ -13,7 +13,6 @@ function App() {
   const [alert, setAlert] = useState(false)
   const [disable, setDisabled] = useState(false)
 
-
   useEffect(() => {
     fetchStudents()
   }, [alert])
