@@ -15,8 +15,7 @@ class App extends React.Component {
       id: 0,
       name: ''
     }
-    // this.handleIdChange = this.handleIdChange.bind(this);
-    // this.handleNameChange = this.handleNameChange.bind(this);
+
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -32,16 +31,42 @@ class App extends React.Component {
         this.setState({
           students: result.students,
           isLoaded: true
+        })
+        this.data = result;
       })
-    })
   }
-
   handleSubmit(event) {
     const id = this.state.id
     const name = this.state.name
+    this.setState({ id: '' })
+    this.setState({ name: '' })
     event.preventDefault()
-    const students = [...this.state.students, {"id": id, "name": name}]
-    this.setState({students: students})
+
+
+    if (id === '') {
+      alert("Por favor ingrese el id")
+    }
+    else if (id !== '') {
+      this.data.students.forEach(students => {
+        if (id === students.id) {
+          alert("El id ya existe")
+        }
+      });
+    }
+    else if (name.length === 0) {
+      alert("Por favor ingrese el nombre")
+    }
+    else if (name !== 0) {
+      this.data.students.forEach(students => {
+        if (name === students.name) {
+          alert("El estudiante ya existe")
+        }
+      });
+    }
+    else {
+      const students = [...this.state.students, { "id": id, "name": name }]
+      this.setState({ students: students })
+    }
   }
 
   // handleIdChange(event) {
@@ -58,19 +83,19 @@ class App extends React.Component {
     })
   }
 
-  render(){
+  render() {
     const { students, isLoaded } = this.state
     return (
       <Layout>
-        <Navbar/>
+        <Navbar />
 
         <form onSubmit={this.handleSubmit}>
           <input value={this.state.id} type="number" name="id" placeholder="id" onChange={this.handleChange}></input>
           <input value={this.state.name} type="text" name="name" placeholder="name" onChange={this.handleChange}></input>
           <button type="submit" value="submit">Add student</button>
         </form>
-        
-        {!isLoaded ? <p>loading...</p> : <List students={students} hoverable/>}
+
+        {!isLoaded ? <p>loading...</p> : <List students={students} hoverable />}
         <Footer />
       </Layout>
     );
