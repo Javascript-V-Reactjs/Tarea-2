@@ -1,6 +1,5 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-// import { students } from './students';
 import List from './components/List'
 import Navbar from './components/Navbar';
 import Layout from './components/Layout'
@@ -11,11 +10,11 @@ function App () {
   const [isLoaded, setIsLoaded] = useState(false)
   const [idInput, setIdInput] = useState()
   const [nameInput, setNameInput] = useState('')
-  const [alert, setAlert] = useState(false)
+  const [Alert, setAlert] = useState(false)
 
   useEffect(()=>{
     fetchStudents()
-  }, [alert])
+  }, [Alert])
 
   const fetchStudents = () => {
     fetch('https://students.hasura.app/api/rest/students', {
@@ -43,8 +42,15 @@ function App () {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    setNameInput(" ")
+    setIdInput(" ")
+    for (let i = 0; i < students.length; i++) {
+      const validId = students[i].id;
+      if(validId === Number(idInput)){
+        return alert("EL id está repetido");
+      } 
+    }
     insertStudent(idInput, nameInput).then(() => setAlert(true))
-    // setStudents({students: students})
   }
 
   return (
@@ -52,11 +58,11 @@ function App () {
         <Navbar/>
 
         <form onSubmit={handleSubmit}>
-          <input value={idInput} type="number" name="id" placeholder="id" onChange={e => setIdInput(e.target.value)}></input>
-          <input value={nameInput} type="text" name="name" placeholder="name" onChange={e => setNameInput(e.target.value)}></input>
+          <input value={idInput} type="number" name="id" placeholder="id" onChange={e => setIdInput(e.target.value)} required></input>
+          <input value={nameInput} type="text" name="name" placeholder="name" onChange={e => setNameInput(e.target.value)} required></input>
           <button type="submit" value="submit">Add student</button>
         </form>
-        {alert && <h2>Nuevo estudiante guardado</h2>}
+        {Alert && <h2>Nuevo estudiante guardado</h2>}
         
         {!isLoaded ? <p>loading...</p> : <List students={students} hoverable/>}
         <Footer />
