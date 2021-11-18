@@ -8,11 +8,16 @@ export const AlertProvider = ({ children }) => {
     const [message, setMessage] = useState('')
     const [type, setType] = useState('')
     const [isOpened, setIsOpenned] = useState(false)
+    const [autoClose, setAutoClose] = useState(5000)
+    const [position, setPosition] = useState('right')
     
-    const sendAlert = ({type, message}) => {
+    const sendAlert = ({type, message, autoClose, position }) => {
         setMessage(message)
         setType(type)
+        setPosition( !position ? 'rigth' : position)
+        setAutoClose(!autoClose ? 5000 : autoClose)
         setIsOpenned(true)
+        console.log(autoClose)
     }
 
     
@@ -20,9 +25,9 @@ export const AlertProvider = ({ children }) => {
     useEffect(() => {
         const alertTimer = setTimeout(()=> {
             setIsOpenned(false)
-        return () => clearTimeout(alertTimer)
-        }, 5000)
         
+        }, autoClose)
+        return () => clearTimeout(alertTimer)
     })
 
     return (

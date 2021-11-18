@@ -22,7 +22,7 @@ const StudentForm = () => {
       .then(data => {
         setIsLoading(false)
           if (data.insert_students_one === null)  {
-                sendAlert({type: 'warning', message: 'student is repeated'})
+                sendAlert({type: 'warning', message: 'student is repeated', autoClose: 20000})
             } else {
               sendAlert({type: 'success', message: 'new student added'})
                 setIdInput(0)
