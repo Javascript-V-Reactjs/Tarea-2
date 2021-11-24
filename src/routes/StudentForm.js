@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react"
-import { useNavigate } from "react-router"
+import React,{ useState } from "react"
+//import AlertTag from "../components/AlertTag"
 import useAlert from "../hooks/useAlert"
 
 const StudentForm = () => {
-    const [idInput, setIdInput] = useState()
+    const [idInput, setIdInput] = useState(0)
     const [nameInput, setNameInput] = useState('')
     // const [alert, setAlert] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
-    const navigate = useNavigate()
     const { sendAlert } = useAlert()
 
     const insertStudent = async (id, name) => {
@@ -22,20 +21,20 @@ const StudentForm = () => {
       .then(data => {
         setIsLoading(false)
           if (data.insert_students_one === null)  {
-                sendAlert({type: 'warning', message: 'student is repeated'})
+                sendAlert({type: 'warning', message: 'student is repeated', position:'center', autoclose:false})
             } else {
-              sendAlert({type: 'success', message: 'new student added'})
-                setIdInput(0)
-                setNameInput('')
-                navigate('/')
+              sendAlert({type: 'success', message: 'new student added', position:'left', autoclose: 5000})
             }
       })
-       .catch(error => console.log(error))
+        .catch(error => console.log(error))
       }
     
-      const handleSubmit = (event) => {
-        event.preventDefault()
-        insertStudent(idInput, nameInput)
+      const handleSubmit = (e) => {
+        e.preventDefault()
+        insertStudent(idInput, nameInput).then(() => {
+          setIdInput(0);
+          setNameInput("");
+        });
       }
 
       // useEffect(() => {
@@ -49,8 +48,8 @@ const StudentForm = () => {
         <>
             <h1>Add Student</h1>
             <form onSubmit={handleSubmit}>
-                <input required value={idInput} type="number" name="id" placeholder="id" onChange={e => setIdInput(e.target.value)}></input>
-                <input required value={nameInput} type="text" name="name" placeholder="name" onChange={e => setNameInput(e.target.value)}></input>
+                <input required value={idInput} type="number" name="id" placeholder="id" onChange={(e) => setIdInput(e.target.value)}></input>
+                <input required value={nameInput} type="text" name="name" placeholder="name" onChange={(e) => setNameInput(e.target.value)}></input>
                 <button disabled={isLoading} type="submit" value="submit">{ isLoading ? 'Loading' : 'Add student'}</button>
             </form>
         </>

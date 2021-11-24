@@ -11,24 +11,17 @@ import AlertTag from './components/AlertTag';
 import useAlert from './hooks/useAlert';
 
 function App () {
-  const { type, message, isOpened } = useAlert()
+  const { type, message, isOpened, position} = useAlert()
    return (
      <>
       <Layout>
       <Navbar/>
-      <AlertTag isOpened={isOpened} type={type} message={message}/>
+      <AlertTag isOpened={isOpened} type={type} message={message} position={position}/>
       <Routes>
           <Route path='/' element={<StudentList hoverable/>} />
           <Route  path='/students' element={<StudentList hoverable />} />
           <Route  path='/student/:StudentId' element={<Student />} />
           <Route  path='/addStudent' element={<StudentForm />} />
-          <Route  path='/updateStudent/:StudentId' element={<StudentForm />} />
-          <Route path="*" element={
-            <main style={{ padding: "1rem" }}>
-              <p>There's nothing here!</p>
-            </main>
-            }
-          />
         </Routes>
 
         <Footer />

@@ -51,6 +51,27 @@
 .danger {
   background-color: var(--danger);
 }
+.closeAlert{
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.center{
+  top: 20rem;
+  left: 15rem;
+  right: 15rem;
+}
+
+.left{
+  left: 4rem;
+  right: 30rem;
+}
+
+.right{
+  right: 4rem;
+}
+
 
 tr.hoverable:hover {
   border: 1px solid var(--highlight);
