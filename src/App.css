@@ -35,10 +35,32 @@
   right: 2rem;
   top: 5rem;
   color: white;
-  
   padding: 1rem;
   box-shadow: 3px 3px 16px 2px rgba(0,0,0,0.51);
 }
+
+.CloseModal{
+  color: white;
+  font-weight: bold;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.right{
+  right: 2rem;
+}
+
+.left{
+  left: 2rem;
+  right: unset;
+}
+
+.center{
+  top: 50%;
+  left: 0%;
+  right: unset;
+}
+
 
 .warning {
   background-color: var(--warning);

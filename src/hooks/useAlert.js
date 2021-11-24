@@ -1,46 +1,51 @@
-import React from "react";
-import { useContext, useState, useEffect, createContext } from "react";
-import AlertTag from "../components/AlertTag";
+import { createContext, useContext, useEffect, useState } from "react";
 
-export const AlertContext = createContext()
+export const AlertContext = createContext();
 
 export const AlertProvider = ({ children }) => {
-    const [message, setMessage] = useState('')
-    const [type, setType] = useState('')
-    const [isOpened, setIsOpenned] = useState(false)
-    
-    const sendAlert = ({type, message}) => {
-        setMessage(message)
-        setType(type)
-        setIsOpenned(true)
+  const [message, setMessage] = useState("");
+  const [type, setType] = useState("");
+  const [position,setPosition] = useState('right');
+  const [close, setClose] = useState(5000);
+  const [isOpened, setIsOpened] = useState(false);
+
+  const sendAlert = ({ type, message, close , position }) => {
+    setMessage(message);
+    setType(type);
+    setIsOpened(true);
+    setClose(close);
+    setPosition(position);
+  };
+
+  useEffect (() => {
+    if(close === false){
+      return null
+    }else{
+      const alertTimer = setTimeout(() => {
+        setIsOpened(false)
+      }
+      , close)
+      return () => clearTimeout(alertTimer)
     }
+  })
 
-    
-
-    useEffect(() => {
-        const alertTimer = setTimeout(()=> {
-            setIsOpenned(false)
-        return () => clearTimeout(alertTimer)
-        }, 5000)
-        
-    })
-
-    return (
-        <AlertContext.Provider value={{ sendAlert, type, message, isOpened, AlertTag}}>
-            { children }
-        </AlertContext.Provider>
-    )
-}
+  return (
+    <AlertContext.Provider value={{ sendAlert, type, message, isOpened , position}}>
+      {children}
+    </AlertContext.Provider>
+  );
+};
 
 const useAlert = () => {
-    const context = useContext(AlertContext)
+  const context = useContext(AlertContext);
 
-    if (context === undefined) {
-        throw new Error(
-            'You must wrap your application with <AlertProvider /> in order to useAlert().',
-          ) 
-    }
-    return context
-}
+  if (context === undefined) {
+    throw new Error(
+      "You must wrap your application with <AlertProvider /> in order to use useAlert hook."
+    );
+  }
 
-export default useAlert
+  return context;
+};
+
+export default useAlert;
