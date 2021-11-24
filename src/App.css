@@ -35,17 +35,26 @@
   right: 2rem;
   top: 5rem;
   color: white;
-  
   padding: 1rem;
   box-shadow: 3px 3px 16px 2px rgba(0,0,0,0.51);
 }
 
+.closeDiv {
+  --text-main: #dbdbdb;
+  bottom: 3.4rem;
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+}
+
 .warning {
   background-color: var(--warning);
+  padding: 2.5rem;
 }
 
 .success {
   background-color: var(--success);
+  padding: 2.5rem;
 }
 
 .danger {
