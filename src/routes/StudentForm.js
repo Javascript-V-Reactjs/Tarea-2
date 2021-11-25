@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState} from "react"
 import { useNavigate } from "react-router"
 import useAlert from "../hooks/useAlert"
 
@@ -22,9 +22,9 @@ const StudentForm = () => {
       .then(data => {
         setIsLoading(false)
           if (data.insert_students_one === null)  {
-                sendAlert({type: 'warning', message: 'student is repeated'})
+                sendAlert({type: 'warning', message: 'student is repeated', position:'center', autoclose:false})
             } else {
-              sendAlert({type: 'success', message: 'new student added'})
+              sendAlert({type: 'success', message: 'new student added', position:'left', autoclose: 8000})
                 setIdInput(0)
                 setNameInput('')
                 navigate('/')
@@ -35,7 +35,10 @@ const StudentForm = () => {
     
       const handleSubmit = (event) => {
         event.preventDefault()
-        insertStudent(idInput, nameInput)
+        insertStudent(idInput, nameInput).then(() => {
+          setIdInput(0);
+          setNameInput("");
+        });
       }
 
       // useEffect(() => {
