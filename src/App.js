@@ -12,8 +12,8 @@ import useAlert from './hooks/useAlert';
 
 function App () {
   const { type, message, isOpened } = useAlert()
-   return (
-     <>
+    return (
+      <>
       <Layout>
       <Navbar/>
       <AlertTag isOpened={isOpened} type={type} message={message}/>
@@ -30,7 +30,6 @@ function App () {
             }
           />
         </Routes>
-
         <Footer />
       </Layout>
     </>
