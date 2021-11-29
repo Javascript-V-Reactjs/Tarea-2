@@ -8,6 +8,7 @@ const AlertTag = ({ message, type, isOpened, onClose, success}) => {
     if (!isOpened) return null
     return ReactDOM.createPortal(
             <div className={`alert ${type}`}>
+                <div className='Close' onClick={(e)=>{e.target.parentElement.style.display = 'none'}}> Close X </div>
                 <span>{message}</span>
             </div>,
         alertContainer

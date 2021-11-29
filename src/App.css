@@ -37,7 +37,8 @@
   color: white;
   
   padding: 1rem;
-  box-shadow: 3px 3px 16px 2px rgba(0,0,0,0.51);
+  box-shadow: 3px 3px 16px 2px rgba(0, 0, 0, 0.486);
+  border-radius: 0.6rem;
 }
 
 .warning {
@@ -913,4 +914,13 @@ body > footer {
     color: #00f;
     text-decoration: underline;
   }
+}
+
+.Close{
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Close:hover{
+  color: rgb(255, 44, 44);
 }
