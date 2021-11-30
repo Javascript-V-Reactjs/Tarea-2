@@ -10,21 +10,21 @@ const Student = () => {
 
     const getStudentById = (id) => {
         fetch(`${process.env.REACT_APP_API_URL}student/${id}`, {
-        method: 'GET',
-        headers: {
-            'x-hasura-admin-secret': process.env.REACT_APP_HASURA_SECRET
-        }
+            method: 'GET',
+            headers: {
+                'x-hasura-admin-secret': process.env.REACT_APP_HASURA_SECRET
+            }
         }).then(response => response.json())
-        .then(result => {
-            setIsLoaded(true)
-            setStudent(result.students_by_pk)
-        })
+            .then(result => {
+                setIsLoaded(true)
+                setStudent(result.students_by_pk)
+            })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getStudentById(params.StudentId)
     }, [isLoaded])
-    
+
     if (!isLoaded) return <p>Loading...</p>
 
     return (

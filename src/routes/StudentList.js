@@ -5,27 +5,27 @@ function StudentList(props) {
     const [students, setStudents] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchStudents()
     }, [isLoaded])
 
     const fetchStudents = () => {
         fetch(`${process.env.REACT_APP_API_URL}students`, {
-        method: 'GET',
-        headers: {
-            'x-hasura-admin-secret': process.env.REACT_APP_HASURA_SECRET
-        }
+            method: 'GET',
+            headers: {
+                'x-hasura-admin-secret': process.env.REACT_APP_HASURA_SECRET
+            }
         }).then(response => response.json())
-        .then(result => {
-            setIsLoaded(true)
-            setStudents(result.students)
-        })
+            .then(result => {
+                setIsLoaded(true)
+                setStudents(result.students)
+            })
     }
 
     if (!isLoaded) return <p>loading...</p>
-    
+
     return (
-        <div style={{flex: "1 0 auto"}}>
+        <div style={{ flex: "1 0 auto" }}>
             <h1>Students List</h1>
             <table>
                 <thead>
@@ -36,7 +36,7 @@ function StudentList(props) {
                 </thead>
                 <tbody >
                     {
-                        students.map(student => 
+                        students.map(student =>
                             <tr className={props.hoverable ? 'hoverable' : ''} key={student.id}>
                                 <td><Link to={`/student/${student.id}`}>{student.id}</Link></td>
                                 <td>{student.name}</td>

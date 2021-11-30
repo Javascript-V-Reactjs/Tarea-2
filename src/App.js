@@ -1,19 +1,29 @@
 import './App.css';
-import { students } from './students';
-import List from './components/List'
+import React from 'react';
+import StudentList from './routes/StudentList'
 import Navbar from './components/Navbar';
 import Layout from './components/Layout'
 import Footer from './components/Footer';
-import { header } from './header';
+import StudentForm from './routes/StudentForm';
+import { Routes, Route } from 'react-router-dom'
+import Student from './routes/Student';
+import AlertTag from './components/AlertTag';
+import useAlert from './hooks/useAlert';
 
-function App() {
+export default function App() {
+  const { type, message, isOpened } = useAlert();
+
   return (
     <Layout>
-      <Navbar/>
-      <List students={students} header={header}/>
+      <Navbar />
+      <AlertTag isOpened={isOpened} type={type} message={message} />
+      <Routes>
+        <Route path="/" element={<StudentList hoverable />} />
+        <Route path="/addStudent" element={<StudentForm />} />
+        <Route path="/student/:StudentId" element={<Student />} />
+      </Routes>
+
       <Footer />
     </Layout>
   );
 }
-
-export default App;
