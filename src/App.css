@@ -40,6 +40,14 @@
   box-shadow: 3px 3px 16px 2px rgba(0,0,0,0.51);
 }
 
+.close-Tag{
+  color: #ffffff;
+  bottom: 3.4rem;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+}
+
 .warning {
   background-color: var(--warning);
 }
