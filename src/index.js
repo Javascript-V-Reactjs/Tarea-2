@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import StudentList from './routes/StudentList'
-import Student from './routes/Student'
-import StudentForm from './routes/StudentForm'
+// import StudentList from './routes/StudentList'
+// import Student from './routes/Student'
+// import StudentForm from './routes/StudentForm'
 import { AlertProvider } from './hooks/useAlert';
 
 ReactDOM.render(
